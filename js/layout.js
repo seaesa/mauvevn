@@ -26,8 +26,13 @@
   ];
 
   function isActive(url) {
-    var here = location.pathname.split("/").pop() + location.search;
-    return decodeURIComponent(here) === decodeURIComponent(url);
+    var path = location.pathname.replace(/\/$/, "") || "/";
+    var here = (path === "/" ? "/" : path + "/") + location.search;
+    // normalize comparison: strip trailing slash from the path part of url
+    var parts = url.split("?");
+    var urlPath = parts[0].replace(/\/$/, "") || "/";
+    var urlNorm = (urlPath === "/" ? "/" : urlPath + "/") + (parts[1] ? "?" + parts[1] : "");
+    return decodeURIComponent(here) === decodeURIComponent(urlNorm);
   }
 
   var sprite =
@@ -74,7 +79,7 @@
         '<div class="header-icons">' +
           '<div class="search-wrap">' +
             '<a href="#" class="header-icon" data-toggle="search" aria-label="Tìm kiếm"><svg><use href="#i-search"/></svg></a>' +
-            '<form class="search-box" action="search.html" role="search"><input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" required><button type="submit" aria-label="Tìm"><svg><use href="#i-search"/></svg></button></form>' +
+            '<form class="search-box" action="/search/" role="search"><input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" required><button type="submit" aria-label="Tìm"><svg><use href="#i-search"/></svg></button></form>' +
           "</div>" +
           '<div class="account-wrap">' +
             '<a href="#" class="header-icon" data-toggle="account" aria-label="Tài khoản"><svg><use href="#i-user"/></svg></a>' +

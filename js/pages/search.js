@@ -29,7 +29,7 @@
     M.bindCards(grid);
 
     if (pages > 1) {
-      var link = function (n) { return "search.html?q=" + encodeURIComponent(q) + "&page=" + n; };
+      var link = function (n) { return "/search/?q=" + encodeURIComponent(q) + "&page=" + n; };
       var html = "";
       if (page > 1) html += '<a href="' + link(page - 1) + '" aria-label="Trang trước"><svg><use href="#i-left"/></svg></a>';
       for (var i = 1; i <= pages; i++) {

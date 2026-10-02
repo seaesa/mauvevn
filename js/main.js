@@ -44,11 +44,11 @@
         }).join("") + "</div>";
       }
       return '<div class="pro-loop"><div class="pro-loop__wrap">' +
-        '<div class="pro-loop__image"><a href="product.html?handle=' + p.handle + '">' +
+        '<div class="pro-loop__image"><a href="/product/?handle=' + p.handle + '">' +
           '<img class="img-1" src="' + CDN + p.img1 + '_1024x1024.jpg" alt="' + p.name + '" loading="lazy">' +
           '<img class="img-2" src="' + CDN + p.img2 + '_1024x1024.jpg" alt="" loading="lazy">' +
         "</a></div>" +
-        '<h3 class="pro-loop__name"><a href="product.html?handle=' + p.handle + '" title="' + p.name + '">' + p.name + "</a></h3>" +
+        '<h3 class="pro-loop__name"><a href="/product/?handle=' + p.handle + '" title="' + p.name + '">' + p.name + "</a></h3>" +
         '<div class="pro-loop__price"><strong>' + p.price + "</strong></div>" +
         sw +
       "</div></div>";

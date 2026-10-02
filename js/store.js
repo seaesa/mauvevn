@@ -7,16 +7,16 @@
   var SEEN_KEY = "mauve_seen";
 
   var routes = {
-    home: function () { return "index.html"; },
-    collection: function (h) { return "collection.html?handle=" + encodeURIComponent(h); },
-    product: function (h) { return "product.html?handle=" + encodeURIComponent(h); },
-    page: function (h) { return "page.html?handle=" + encodeURIComponent(h); },
-    search: function (q) { return "search.html?q=" + encodeURIComponent(q || ""); },
-    contact: function () { return "contact.html"; },
-    cart: function () { return "cart.html"; },
-    blog: function () { return "blog.html"; },
-    article: function (h) { return "article.html?handle=" + encodeURIComponent(h); },
-    account: function () { return "account.html"; }
+    home: function () { return "/"; },
+    collection: function (h) { return "/collection/?handle=" + encodeURIComponent(h); },
+    product: function (h) { return "/product/?handle=" + encodeURIComponent(h); },
+    page: function (h) { return "/page/?handle=" + encodeURIComponent(h); },
+    search: function (q) { return "/search/?q=" + encodeURIComponent(q || ""); },
+    contact: function () { return "/contact/"; },
+    cart: function () { return "/cart/"; },
+    blog: function () { return "/blog/"; },
+    article: function (h) { return "/article/?handle=" + encodeURIComponent(h); },
+    account: function () { return "/account/"; }
   };
 
   function money(n) {
@@ -47,7 +47,7 @@
   var cache = {};
   function load(name) {
     if (!cache[name]) {
-      cache[name] = fetch("data/" + name + ".json").then(function (r) {
+      cache[name] = fetch("/data/" + name + ".json").then(function (r) {
         if (!r.ok) throw new Error(name + " " + r.status);
         return r.json();
       });
